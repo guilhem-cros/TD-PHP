@@ -24,7 +24,9 @@ class Voiture {
            
   // une methode d'affichage.
   public function afficher() {
-    // À compléter dans le prochain exercice
+    return " Marque : " . $this->marque .
+    "\n Couleur : " . $this->couleur .
+    "\n Immatriculation : " . $this->immatriculation;
   }
 
   public function getImma(){
@@ -37,7 +39,7 @@ class Voiture {
 
   public function setImma($imma2){
     if (strlen($imma2) > 8){
-      echo "Nombre de caractère supérieur à la limite (8)."
+      echo "Nombre de caractère supérieur à la limite (8).";
     }
     else{
       $this->immatriculation = $imma2;
