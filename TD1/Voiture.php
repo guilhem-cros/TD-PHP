@@ -25,8 +25,8 @@ class Voiture {
   // une methode d'affichage.
   public function afficher() {
     return " Marque : " . $this->marque .
-    "\n Couleur : " . $this->couleur .
-    "\n Immatriculation : " . $this->immatriculation;
+    "</br> Couleur : " . $this->couleur .
+    "</br> Immatriculation : " . $this->immatriculation;
   }
 
   public function getImma(){

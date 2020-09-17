@@ -10,7 +10,7 @@
     	<?php
     	require_once('Voiture.php');
     	$voiture1 = new Voiture("BMW", "BLEU", "HYF586YH");
-    	afficher($voiture1);
+    	echo $voiture1->afficher();
 
 
     	?>
