@@ -16,10 +16,6 @@ class Model {
     
     public static $pdo;
     
-    
-    
-    
-    
     public static function Init(){
         $hostname = Conf::getHostname();
         $database_name = Conf::getDatabase();
@@ -35,8 +31,7 @@ class Model {
         echo $e->getMessage(); // affiche un message d'erreur
         die();
         }
-        Model::Init();
     }
     
-    
 }
+Model::Init();
