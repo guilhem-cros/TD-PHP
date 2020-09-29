@@ -30,14 +30,15 @@ foreach (Voiture::getAllVoitures() as $value) {
 	echo "<br>";
 }
 
+echo "</br> TD3 </br>";
 
+echo (Voiture::getVoitureByImmat("GTF32NNJ")->afficher());
 
+$v1 = new Voiture("Peugeot", "Blanc", "IHGTFGTF");
 
-
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+echo"</br></br>";
+foreach (Voiture::getAllVoitures() as $value) {
+	echo ($value->afficher());
+	echo "<br>";
+}
 ?>
