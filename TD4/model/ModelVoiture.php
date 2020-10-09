@@ -2,7 +2,7 @@
 
 require_once 'Model.php';
 
-class Voiture {
+class ModelVoiture {
 
     private $marque;
     private $couleur;
