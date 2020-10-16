@@ -10,7 +10,7 @@
           <fieldset>
             <legend>Infos voiture :</legend>
             <p> 
-                <input type ="hidden" name ="action" id="created"/>
+                <input type ="hidden" name ="action" id="created" value="created"/>
               <label for="immat_id">Immatriculation</label> :
               <input type="text" placeholder="Ex : 256AB34" name="immatriculation" id="immat_id" required/>
             </p>
