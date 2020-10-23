@@ -40,7 +40,11 @@ class ControllerVoiture {
         $marque = $_GET["Marque"];
         $v = new ModelVoiture($marque, $couleur, $imma);
         $v->save();
-        ControllerVoiture::readAll();
+        $tab_v = ModelVoiture::getAllVoitures();
+        $controller=('voiture');
+        $view='created';
+        $pagetitle='Liste des voitures';
+        require (File::build_path(array("view", "view.php")));
     }
 }
 ?>
