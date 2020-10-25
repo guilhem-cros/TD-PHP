@@ -46,6 +46,67 @@ class ControllerVoiture {
         $pagetitle='Liste des voitures';
         require (File::build_path(array("view", "view.php")));
     }
+    
+    public static function error(){
+        $controller=('voiture');
+        $view='error';
+        $pagetitle='Erreur';
+        require (File::build_path(array("view", "view.php")));         
+    }
+    
+    public static function delete(){
+       
+        $tab_v = ModelVoiture::getAllVoitures();     //appel au modèle pour gerer la BD
+        $imma = $_GET["imma"];
+        $v = ModelVoiture::getVoitureByImmat($imma);
+        if ($v == null) {
+            $pagetitle = 'Immatriculation innexistante';
+            $controller=('voiture');
+            $view='error';
+            require (File::build_path(array("view", "view.php")));
+        }
+        else{
+            ModelVoiture::deleteByImmat($imma);
+        $controller=('voiture');
+        $view='deleted';
+        $pagetitle='Suppression de véhicule';
+        require (File::build_path(array("view", "view.php")));
+        }
+        
+    }
+    
+    public static function update(){
+        $pagetitle='Mise à jour infos véhicule';
+        $imma = $_GET["imma"];
+        $v = ModelVoiture::getVoitureByImmat($imma);
+        $color = $v->getCouleur();
+        $marque = $v->getMarque();
+        if ($v == null) {
+            $controller=('voiture');
+            $view='error';
+            require (File::build_path(array("view", "view.php")));
+        } else {
+            $controller='voiture';
+            $view='update';
+            require (File::build_path(array("view", "view.php")));
+        }
+    }
+    
+    public static function updated(){
+        $tab_v = ModelVoiture::getAllVoitures();
+        $pagetitle='Véhicule mis à jour';
+        $imma = $_GET["immatriculation"];
+        $data = array(
+        "immat" => $_GET["immatriculation"],
+        "marque" => $_GET["Marque"],
+        "couleur" => $_GET["Couleur"],
+        );
+        $v = ModelVoiture::getVoitureByImmat($imma);
+        $v->update($data);
+        $controller="voiture";
+        $view = 'updated';
+        require (File::build_path(array("view", "view.php")));
+    }
 }
 ?>
 

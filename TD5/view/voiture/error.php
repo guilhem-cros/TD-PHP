@@ -3,9 +3,7 @@
     
     <body>
         <?php
-        $immaHtml = htmlspecialchars($imma);
-        $immaUrl = rawurlencode($imma);
-        echo "Aucune voiture immatriculée " . $immaHtml . " n'est repertoriée." ;
+        echo "<p>$pagetitle <br> Erreur, veuillez vérifier l'url et les paramètres recherchés</p>" ;
         ?>
     </body>
 </html>
