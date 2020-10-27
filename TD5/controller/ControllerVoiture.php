@@ -4,9 +4,11 @@ require_once (File::build_path(array("model", "ModelVoiture.php"))); // chargeme
 
 class ControllerVoiture {
     
+    protected static $object = 'voiture';
+    
 
     public static function readAll() {
-        $tab_v = ModelVoiture::getAllVoitures();     //appel au modèle pour gerer la BD
+        $tab_v = ModelVoiture::selectAll();     //appel au modèle pour gerer la BD
         $controller=('voiture');
         $view='list';
         $pagetitle='Liste des voitures';
@@ -16,7 +18,7 @@ class ControllerVoiture {
     public static function read() {
         $pagetitle='Affichage info véhicule unique';
         $imma = $_GET["imma"];
-        $v = ModelVoiture::getVoitureByImmat($imma);
+        $v = ModelVoiture::select($imma);
         if ($v == null) {
             $controller=('voiture');
             $view='error';
@@ -28,19 +30,26 @@ class ControllerVoiture {
         }
     }
     public static function create(){
+        $imma = "";
+        $color = "";
+        $marque = "";
+        $form = "required";
+        $act = "created";
         $pagetitle='Création véhicule';
         $controller='voiture';
-        $view='create';
+        $view='update';
         require (File::build_path(array("view", "view.php")));
     }
     
     public static function created(){
-        $imma = $_GET["immatriculation"];
-        $couleur = $_GET["Couleur"];
-        $marque = $_GET["Marque"];
-        $v = new ModelVoiture($marque, $couleur, $imma);
-        $v->save();
-        $tab_v = ModelVoiture::getAllVoitures();
+        $data = array(
+        "immatriculation" => $_GET["immatriculation"],
+        "marque" => $_GET["Marque"],
+        "couleur" => $_GET["Couleur"],
+        );
+        $v = new ModelVoiture($_GET["Marque"], $_GET["Couleur"], $_GET["immatriculation"]);
+        ModelVoiture::save($data);
+        $tab_v = ModelVoiture::selectAll();
         $controller=('voiture');
         $view='created';
         $pagetitle='Liste des voitures';
@@ -56,9 +65,9 @@ class ControllerVoiture {
     
     public static function delete(){
        
-        $tab_v = ModelVoiture::getAllVoitures();     //appel au modèle pour gerer la BD
+        $tab_v = ModelVoiture::selectAll();     //appel au modèle pour gerer la BD
         $imma = $_GET["imma"];
-        $v = ModelVoiture::getVoitureByImmat($imma);
+        $v = ModelVoiture::select($imma);
         if ($v == null) {
             $pagetitle = 'Immatriculation innexistante';
             $controller=('voiture');
@@ -66,7 +75,7 @@ class ControllerVoiture {
             require (File::build_path(array("view", "view.php")));
         }
         else{
-            ModelVoiture::deleteByImmat($imma);
+            ModelVoiture::delete($imma);
         $controller=('voiture');
         $view='deleted';
         $pagetitle='Suppression de véhicule';
@@ -76,9 +85,11 @@ class ControllerVoiture {
     }
     
     public static function update(){
+        $act = "updated";
+        $form = "readonly";
         $pagetitle='Mise à jour infos véhicule';
         $imma = $_GET["imma"];
-        $v = ModelVoiture::getVoitureByImmat($imma);
+        $v = ModelVoiture::select($imma);
         $color = $v->getCouleur();
         $marque = $v->getMarque();
         if ($v == null) {
@@ -93,15 +104,15 @@ class ControllerVoiture {
     }
     
     public static function updated(){
-        $tab_v = ModelVoiture::getAllVoitures();
+        $tab_v = ModelVoiture::selectAll();
         $pagetitle='Véhicule mis à jour';
         $imma = $_GET["immatriculation"];
         $data = array(
-        "immat" => $_GET["immatriculation"],
+        "immatriculation" => $_GET["immatriculation"],
         "marque" => $_GET["Marque"],
         "couleur" => $_GET["Couleur"],
         );
-        $v = ModelVoiture::getVoitureByImmat($imma);
+        $v = ModelVoiture::select($imma);
         $v->update($data);
         $controller="voiture";
         $view = 'updated';

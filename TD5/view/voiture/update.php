@@ -3,13 +3,13 @@
    
    
     <body>
-        <form method="get" action="index.php">
+        <form method="get" action="index.php" controller="voiture">
           <fieldset>
             <legend>Infos voiture :</legend>
             <p> 
-              <input type ="hidden" name ="action" value="updated"/>
+              <input type ="hidden" name ="action" value=<?php echo "\"$act\""?>/>
               <label for="immat_id">Immatriculation</label> :
-              <input type="text" <?php echo "value=\"" . htmlspecialchars($imma) . "\""?> name="immatriculation" id="immat_id" <?php echo "readonly=\"" . htmlspecialchars($imma) . "\""?>/>
+              <input type="text" <?php echo "value=\"" . htmlspecialchars($imma) . "\""?> name="immatriculation" id="immat_id" <?php echo "$form=\"" . htmlspecialchars($imma) . "\""?>/>
             </p>
             <p>
               <label for="color_id">Couleur</label> :

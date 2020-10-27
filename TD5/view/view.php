@@ -5,7 +5,7 @@
         <title><?php echo $pagetitle; ?></title>
     <nav style="border-bottom: 2px grey solid">
         <ul>
-
+            
             <li style="display:inline; margin-right:1em; padding: 3px; border:2px black solid"><a href = index.php?action=readAll > Liste complète des véhicules</a></li>
             <li style="display:inline; margin-right:1em; padding: 3px; border:2px black solid"><a href = index.php?action=readAll&controller=utilisateur> Utilisateurs</a></li>
             <li style="display:inline; margin-right:1em; padding: 3px; border:2px black solid"><a href = index.php?action=readAll&controller=trajet> Trajets</a></li>

@@ -9,5 +9,7 @@
             echo '<p> Voiture d\'immatriculation ' . '<a href= "https://webinfo.iutmontp.univ-montp2.fr/~crosg/PHP/TD-PHP/TD5/index.php?action=read&imma=' . rawurlencode($v->getImma()) .'">' .  htmlspecialchars($v->getImma()) . '</a>.</p>';
                 
         ?>
+        <br><br>
+        <a href="https://webinfo.iutmontp.univ-montp2.fr/~crosg/PHP/TD-PHP/TD5/index.php?action=create"> Ajouter un véhicule </a>
     </body>
 </html>
