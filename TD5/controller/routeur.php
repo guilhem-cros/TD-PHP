@@ -6,9 +6,15 @@ require_once File::build_path(array("controller", "ControllerTrajet.php"));
 // On recupère l'action passée dans l'URL
 
 
+if (isset($_COOKIE["preference"])){
+    $controller_default = $_COOKIE["preference"];
+}
+else{
+    $controller_default = "voiture";
+}
 
 if (!isset($_GET["controller"])){
-    $controller = "voiture";
+    $controller = $controller_default;
 }
 else{
     $controller = $_GET["controller"];

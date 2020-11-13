@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+    <body>
+        <h2>Selectionner une page d'accueil : </h2>
+        <form method="get" action="personalisation.php">
+            <fieldset>
+                <legend>Preference</legend>
+                <div>
+                    <input type="radio" id="voiture" name="preference" value="voiture"
+                           checked>
+                    <label for="voiture">Voitures</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="utilisateur" name="preference" value="utilisateur">
+                    <label for="utilisateur">Utilisateurs</label>
+                </div>
+
+                <div>
+                    <input type="radio" id="trajet" name="preference" value="trajet">
+                    <label for="trajet">Trajets</label>
+                </div>
+                <p>
+                <input type="submit" value="Envoyer" />
+                </p>
+        </form>
+    </body>
+</html>
